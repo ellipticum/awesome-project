@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
 import { ImageProps, Text, TouchableOpacity } from 'react-native'
 
@@ -21,8 +21,10 @@ const UI = {
         aspect-ratio: 1 / 1;
     `,
     Wrapper: styled.View`
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        flex: 1;
     `,
     Content: styled.View`
         flex-direction: column;
@@ -38,14 +40,22 @@ interface Props {
     title: string
     text: string
     date: string
-    navigation: any
     image: IImage
+
+    navigation: any
+    setPosts: Dispatch<SetStateAction<any[]>>
 }
 
-const Post = ({ id, title, text, image, navigation }: Props) => {
+const Post = ({ id, title, text, date, image, navigation, setPosts }: Props) => {
     return (
         <TouchableOpacity
-            onPress={() => navigation.navigate('PostDetails', { post: { id, title, text, image } })}
+            onPress={() =>
+                navigation.navigate('PostDetails', {
+                    post: { id, title, text, image },
+                    navigation,
+                    setPosts
+                })
+            }
         >
             <UI.Post>
                 <UI.Image {...image} />
@@ -54,6 +64,7 @@ const Post = ({ id, title, text, image, navigation }: Props) => {
                         <UI.Title>{title}</UI.Title>
                         <Text>{text}</Text>
                     </UI.Content>
+                    <Text>{date}</Text>
                 </UI.Wrapper>
             </UI.Post>
         </TouchableOpacity>
