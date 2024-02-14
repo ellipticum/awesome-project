@@ -2,15 +2,42 @@ import React from 'react'
 
 import { View, Text } from 'react-native'
 
-const PostDetails = ({ route }) => {
-    const { id } = route.params
+import styled from 'styled-components/native'
 
-    console.log(route)
+const UI = {
+    Wrapper: styled.View`
+        padding: 20px;
+        align-items: center;
+        gap: 30px;
+    `,
+    Content: styled.View`
+        align-items: center;
+        gap: 20px;
+    `,
+    Image: styled.Image`
+        width: 300px;
+        height: 300px;
+        border-radius: 555px;
+    `,
+    Title: styled.Text`
+        font-size: 24px;
+    `,
+    Text: styled.Text`
+        font-size: 18px;
+    `
+}
+
+const PostDetails = ({ route }) => {
+    const { post } = route.params
 
     return (
-        <View>
-            <Text>Test: {id}</Text>
-        </View>
+        <UI.Wrapper>
+            <UI.Image {...post.image} />
+            <UI.Content>
+                <UI.Title>{post.title}</UI.Title>
+                <UI.Text>{post.text}</UI.Text>
+            </UI.Content>
+        </UI.Wrapper>
     )
 }
 

@@ -44,7 +44,9 @@ interface Props {
 
 const Post = ({ id, title, text, image, navigation }: Props) => {
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('PostDetails', { id })}>
+        <TouchableOpacity
+            onPress={() => navigation.navigate('PostDetails', { post: { id, title, text, image } })}
+        >
             <UI.Post>
                 <UI.Image {...image} />
                 <UI.Wrapper>
