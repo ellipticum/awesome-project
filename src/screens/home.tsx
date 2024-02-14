@@ -82,6 +82,7 @@ const Home = ({ navigation }) => {
         }
 
         const post = {
+            id: String(Math.floor(Math.random() * 5555555555)),
             image: {
                 source: {
                     uri: 'https://sun9-40.userapi.com/impg/ySUAUvZ0v8fZBcJKv1YfLM0DzYDtt6NMIShj_g/ZaEoAv5sL5U.jpg?size=1852x1852&quality=95&sign=503f2c43abfdc63b4cacede726133ef5&type=album'

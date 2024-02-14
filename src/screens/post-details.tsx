@@ -33,7 +33,13 @@ const PostDetails = ({ route }) => {
     const id = post.id
 
     const handlePress = () => {
-        setPosts((prevState) => prevState.filter((post) => post.id !== id))
+        setPosts((prevState) =>
+            prevState.filter((post, index, posts) => {
+                console.log(posts)
+
+                return post.id !== id
+            })
+        )
 
         navigation.navigate('Home')
     }

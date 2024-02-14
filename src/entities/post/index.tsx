@@ -26,6 +26,10 @@ const UI = {
         justify-content: space-between;
         flex: 1;
     `,
+    Date: styled.Text`
+        color: #ffffff40;
+    `,
+    Meta: styled.View``,
     Content: styled.View`
         flex-direction: column;
         gap: 5px;
@@ -61,10 +65,12 @@ const Post = ({ id, title, text, date, image, navigation, setPosts }: Props) => 
                 <UI.Image {...image} />
                 <UI.Wrapper>
                     <UI.Content>
-                        <UI.Title>{title}</UI.Title>
+                        <UI.Meta>
+                            <Text>{date}</Text>
+                            <UI.Title>{title}</UI.Title>
+                        </UI.Meta>
                         <Text>{text}</Text>
                     </UI.Content>
-                    <Text>{date}</Text>
                 </UI.Wrapper>
             </UI.Post>
         </TouchableOpacity>
