@@ -32,7 +32,7 @@ const Button = ({ children, onPress, variant = 'Standard' }: Props) => {
     const Variant = Variants[variant]
 
     return (
-        <Variant>
+        <Variant onPress={onPress}>
             <UI.Text>{children}</UI.Text>
         </Variant>
     )

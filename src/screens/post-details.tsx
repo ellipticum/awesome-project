@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { View, Text } from 'react-native'
-
 import styled from 'styled-components/native'
+
+import Button from '@/shared/ui/button'
 
 const UI = {
     Wrapper: styled.View`
@@ -28,7 +28,15 @@ const UI = {
 }
 
 const PostDetails = ({ route }) => {
-    const { post } = route.params
+    const { post, navigation, setPosts } = route.params
+
+    const id = post.id
+
+    const handlePress = () => {
+        setPosts((prevState) => prevState.filter((post) => post.id !== id))
+
+        navigation.navigate('Home')
+    }
 
     return (
         <UI.Wrapper>
@@ -37,6 +45,7 @@ const PostDetails = ({ route }) => {
                 <UI.Title>{post.title}</UI.Title>
                 <UI.Text>{post.text}</UI.Text>
             </UI.Content>
+            <Button onPress={() => handlePress()}>Удалить</Button>
         </UI.Wrapper>
     )
 }
