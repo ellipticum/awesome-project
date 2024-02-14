@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ImageProps, Text } from 'react-native'
+import { ImageProps, Text, TouchableOpacity } from 'react-native'
 
 import styled from 'styled-components/native'
 
@@ -34,23 +34,27 @@ const UI = {
 }
 
 interface Props {
+    id: string
     title: string
     text: string
     date: string
+    navigation: any
     image: IImage
 }
 
-const Post = ({ title, text, image }: Props) => {
+const Post = ({ id, title, text, image, navigation }: Props) => {
     return (
-        <UI.Post>
-            <UI.Image {...image} />
-            <UI.Wrapper>
-                <UI.Content>
-                    <UI.Title>{title}</UI.Title>
-                    <Text>{text}</Text>
-                </UI.Content>
-            </UI.Wrapper>
-        </UI.Post>
+        <TouchableOpacity onPress={() => navigation.navigate('PostDetails', { id })}>
+            <UI.Post>
+                <UI.Image {...image} />
+                <UI.Wrapper>
+                    <UI.Content>
+                        <UI.Title>{title}</UI.Title>
+                        <Text>{text}</Text>
+                    </UI.Content>
+                </UI.Wrapper>
+            </UI.Post>
+        </TouchableOpacity>
     )
 }
 
